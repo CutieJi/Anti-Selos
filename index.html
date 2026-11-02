@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anti-Selos System 💗</title>
+<title>Anti-Selos System</title>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,7 +22,7 @@
     <!-- REGISTER -->
     <div id="registerSection" class="section active">
 
-        <h2>Create Account 💕</h2>
+        <h2>Create Account</h2>
 
         <p class="description">
             Create your Anti-Selos account and receive
@@ -30,7 +30,7 @@
         </p>
 
         <button id="registerBtn" onclick="registerAccount()">
-            Generate My Secret Code 💗
+            Generate My Secret Code
         </button>
 
         <div class="switch-text">
@@ -58,17 +58,17 @@
         </div>
 
         <div class="warning">
-            ⚠️ Keep this code private. Anyone who has this code
+            Keep this code private. Anyone who has this code
             can access your shared Anti-Selos account.
             Save it somewhere safe!
         </div>
 
         <button onclick="copySecretCode()">
-            📋 Copy Secret Code
+            Copy Secret Code
         </button>
 
         <button class="secondary" onclick="openDashboard()">
-            Continue to Dashboard 💗
+            Continue to Dashboard
         </button>
 
     </div>
@@ -76,7 +76,7 @@
     <!-- LOGIN -->
     <div id="loginSection" class="section">
 
-        <h2>Welcome Back! 💗</h2>
+        <h2>Welcome Back!</h2>
 
         <p class="description">
             Enter your shared secret code to access
@@ -96,7 +96,7 @@
         </div>
 
         <button id="loginBtn" onclick="loginAccount()">
-            Login to Anti-Selos 💕
+            Login to Anti-Selos
         </button>
 
         <div class="switch-text">
@@ -111,7 +111,7 @@
 
         <div class="dashboard-header">
             <div>
-                <h2>Our Dashboard 💗</h2>
+                <h2>Our Dashboard</h2>
                 <p class="description" style="margin:0">
                     Welcome to your shared space!
                 </p>
@@ -147,11 +147,11 @@
             <p>Be honest about how you feel.</p>
 
             <button onclick="checkSelos()">
-                YES, NAGSSELOS AKO 😭
+                YES, NAGSSELOS AKO
             </button>
 
             <button class="secondary" onclick="noSelos()">
-                NO, TRUST LANG 💗
+                NO, TRUST LANG
             </button>
         </div>
 
@@ -160,7 +160,7 @@
         </div>
 
         <section class="partner-messages" aria-labelledby="partnerMessagesTitle">
-            <h3 id="partnerMessagesTitle">Messages 💌</h3>
+            <h3 id="partnerMessagesTitle">Messages</h3>
             <div
                 class="comment-list"
                 id="commentList"
@@ -168,7 +168,7 @@
                 aria-live="polite"
                 aria-relevant="additions text"
             >
-                <p class="comment-empty" id="commentEmpty">No messages yet. Send your partner a note 💗</p>
+                <p class="comment-empty" id="commentEmpty">No messages yet. Send your partner a note.</p>
             </div>
             <form class="comment-form" onsubmit="sendPartnerMessage(event)">
                 <label class="visually-hidden" for="commentInput">Write a message to your partner</label>
@@ -180,16 +180,16 @@
                     autocomplete="off"
                     required
                 >
-                <button id="sendMessageBtn" type="submit">Send 💗</button>
+                <button id="sendMessageBtn" type="submit">Send</button>
             </form>
         </section>
 
         <button class="secondary" onclick="showSection('agreementSection')">
-            📜 Anti-Selos Agreement
+            Anti-Selos Agreement
         </button>
 
         <button class="secondary" onclick="showSection('remindersSection')">
-            💌 Love Reminders
+            Love Reminders
         </button>
 
         <button class="danger" onclick="logoutAccount()">
@@ -205,7 +205,7 @@
     <!-- AGREEMENT -->
     <div id="agreementSection" class="section">
 
-        <h2>Anti-Selos Agreement 📜</h2>
+        <h2>Anti-Selos Agreement</h2>
 
         <p class="description">
             Our little promise to each other.
@@ -226,7 +226,7 @@
         </div>
 
         <button id="agreementBtn" onclick="acceptAgreement()">
-            I AGREE! 💗
+            I AGREE!
         </button>
 
         <button class="secondary" onclick="showSection('dashboardSection')">
@@ -238,7 +238,7 @@
     <!-- REMINDERS -->
     <div id="remindersSection" class="section">
 
-        <h2>Love Reminders 💌</h2>
+        <h2>Love Reminders</h2>
 
         <p class="description">
             A little reminder for your relationship.
@@ -249,7 +249,7 @@
         </div>
 
         <button onclick="newReminder()">
-            Another Reminder 💕
+            Another Reminder
         </button>
 
         <button class="secondary" onclick="showSection('dashboardSection')">
@@ -259,7 +259,7 @@
     </div>
 
     <div class="footer">
-        Made with love 💗 Anti-Selos System v2.0
+        Made with <span href="https://rosh.site/">Rosh</span> 💗 Anti-Selos System
     </div>
 
 </div>

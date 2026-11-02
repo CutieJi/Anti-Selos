@@ -440,15 +440,15 @@ window.openDashboard = async function() {
 
                 document.getElementById("agreementMessage").textContent =
                     accepted
-                    ? "💗 The Anti-Selos Agreement has been accepted!"
-                    : "Both partners can share this agreement. 💕";
+                    ? "The Anti-Selos Agreement has been accepted!"
+                    : "Both partners can share this agreement.";
 
                 const agreementButton =
                     document.getElementById("agreementBtn");
 
                 agreementButton.textContent = accepted
                     ? "Agreement Accepted ✓"
-                    : "I AGREE! 💗";
+                    : "I AGREE!";
 
                 agreementButton.disabled = accepted;
 
