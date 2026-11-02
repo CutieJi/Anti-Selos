@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anti-Selos System 💗</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">💗</div>
+        <h1>Anti-Selos System</h1>
+        <p>Less selos, more love!</p>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="registerSection" class="section active">
+
+        <h2>Create Account 💕</h2>
+
+        <p class="description">
+            Create your Anti-Selos account and receive
+            your own unique secret code.
+        </p>
+
+        <button id="registerBtn" onclick="registerAccount()">
+            Generate My Secret Code 💗
+        </button>
+
+        <div class="switch-text">
+            Already have a secret code?
+            <a onclick="showSection('loginSection')">Login here</a>
+        </div>
+
+    </div>
+
+    <!-- GENERATED CODE -->
+    <div id="generatedSection" class="section">
+
+        <h2>Your Secret Code! 🎉</h2>
+
+        <p class="description">
+            Your Anti-Selos account has been created successfully.
+            Share this code with your partner.
+        </p>
+
+        <div class="code-box">
+            <small>YOUR UNIQUE SECRET CODE</small>
+            <div class="secret-code" id="generatedCode">
+                SELOS-XXXX-XXXX-XXXX-XXXX
+            </div>
+        </div>
+
+        <div class="warning">
+            ⚠️ Keep this code private. Anyone who has this code
+            can access your shared Anti-Selos account.
+            Save it somewhere safe!
+        </div>
+
+        <button onclick="copySecretCode()">
+            📋 Copy Secret Code
+        </button>
+
+        <button class="secondary" onclick="openDashboard()">
+            Continue to Dashboard 💗
+        </button>
+
+    </div>
+
+    <!-- LOGIN -->
+    <div id="loginSection" class="section">
+
+        <h2>Welcome Back! 💗</h2>
+
+        <p class="description">
+            Enter your shared secret code to access
+            your Anti-Selos account.
+        </p>
+
+        <div class="input-group">
+            <label>Secret Code</label>
+            <input
+                type="text"
+                id="loginCode"
+                placeholder="SELOS-XXXX-XXXX-XXXX-XXXX"
+                autocomplete="off"
+                maxlength="29"
+                oninput="formatCode(this)"
+            >
+        </div>
+
+        <button id="loginBtn" onclick="loginAccount()">
+            Login to Anti-Selos 💕
+        </button>
+
+        <div class="switch-text">
+            Don't have an account?
+            <a onclick="showSection('registerSection')">Register here</a>
+        </div>
+
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardSection" class="section">
+
+        <div class="dashboard-header">
+            <div>
+                <h2>Our Dashboard 💗</h2>
+                <p class="description" style="margin:0">
+                    Welcome to your shared space!
+                </p>
+            </div>
+
+            <span class="online">● Connected</span>
+        </div>
+
+        <div class="code-box">
+            <small>YOUR SHARED SECRET CODE</small>
+            <div class="secret-code" id="dashboardCode">---</div>
+            <button class="secondary" onclick="copySecretCode()">
+                Copy Code
+            </button>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="number" id="selosCount">0</div>
+                <p>Total Selos Count</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="number" id="agreementStatus">No</div>
+                <p>Agreement Accepted</p>
+            </div>
+
+        </div>
+
+        <div class="question-card">
+            <h3>Nagseselos ka ba ngayon? 🥺</h3>
+            <p>Be honest about how you feel.</p>
+
+            <button onclick="checkSelos()">
+                YES, NAGSSELOS AKO 😭
+            </button>
+
+            <button class="secondary" onclick="noSelos()">
+                NO, TRUST LANG 💗
+            </button>
+        </div>
+
+        <div class="message" id="loveMessage">
+            Remember: Trust and communication are important. 💕
+        </div>
+
+        <button class="secondary" onclick="showSection('agreementSection')">
+            📜 Anti-Selos Agreement
+        </button>
+
+        <button class="secondary" onclick="showSection('remindersSection')">
+            💌 Love Reminders
+        </button>
+
+        <button class="danger" onclick="logoutAccount()">
+            Logout
+        </button>
+
+        <p class="status" id="syncStatus">
+            Connecting to Firebase...
+        </p>
+
+    </div>
+
+    <!-- AGREEMENT -->
+    <div id="agreementSection" class="section">
+
+        <h2>Anti-Selos Agreement 📜</h2>
+
+        <p class="description">
+            Our little promise to each other.
+        </p>
+
+        <div class="agreement-list">
+            <p>💗 I promise to communicate honestly.</p>
+            <p>💗 I will not assume without asking.</p>
+            <p>💗 I will respect my partner's privacy.</p>
+            <p>💗 I will express my feelings calmly.</p>
+            <p>💗 I will give trust and understanding.</p>
+            <p>💗 I will listen to my partner.</p>
+            <p>💗 I will not invalidate their feelings.</p>
+        </div>
+
+        <div class="message" id="agreementMessage">
+            Both of you can share this agreement.
+        </div>
+
+        <button id="agreementBtn" onclick="acceptAgreement()">
+            I AGREE! 💗
+        </button>
+
+        <button class="secondary" onclick="showSection('dashboardSection')">
+            Back to Dashboard
+        </button>
+
+    </div>
+
+    <!-- REMINDERS -->
+    <div id="remindersSection" class="section">
+
+        <h2>Love Reminders 💌</h2>
+
+        <p class="description">
+            A little reminder for your relationship.
+        </p>
+
+        <div class="message" id="reminderMessage">
+            You are loved. Don't overthink everything. 💗
+        </div>
+
+        <button onclick="newReminder()">
+            Another Reminder 💕
+        </button>
+
+        <button class="secondary" onclick="showSection('dashboardSection')">
+            Back to Dashboard
+        </button>
+
+    </div>
+
+    <div class="footer">
+        Made with love 💗 Anti-Selos System v2.0
+    </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

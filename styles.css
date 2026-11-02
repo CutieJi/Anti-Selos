@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --pink: #e75480;
+    --dark-pink: #cc3e6c;
+    --light-pink: #fff0f5;
+    --border: #f5d5e0;
+    --text: #704354;
+    --muted: #a77b8b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 12% 18%, rgba(255, 255, 255, .76), transparent 28%),
+        radial-gradient(ellipse at 88% 82%, rgba(255, 255, 255, .56), transparent 30%),
+        #ffe3ed;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 440px;
+    padding: 25px;
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, .85);
+    border-radius: 25px;
+    box-shadow: 0 18px 55px rgba(190, 80, 120, .18);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.logo {
+    font-size: 42px;
+    line-height: 1.15;
+    margin-bottom: 4px;
+}
+
+.header h1 {
+    color: var(--pink);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.header p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+h2 {
+    font-size: 19px;
+    margin-bottom: 6px;
+}
+
+.description {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.input-group {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    background: #fffafd;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    outline: none;
+    font-size: 13px;
+    color: var(--text);
+}
+
+input:focus {
+    border-color: var(--pink);
+}
+
+input::placeholder {
+    color: #c5a5b1;
+}
+
+button {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 11px;
+    background: var(--pink);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+    margin-top: 8px;
+}
+
+button:hover {
+    background: var(--dark-pink);
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+button.secondary {
+    background: var(--light-pink);
+    color: var(--pink);
+}
+
+button.secondary:hover {
+    background: #ffdfeb;
+}
+
+button.danger {
+    background: #fff0f0;
+    color: #d9534f;
+}
+
+.switch-text {
+    text-align: center;
+    font-size: 11px;
+    margin-top: 15px;
+    color: var(--muted);
+}
+
+.switch-text a {
+    color: var(--pink);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.code-box {
+    padding: 13px 10px;
+    background: #fff6f9;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.code-box small {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.secret-code {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    color: var(--pink);
+    overflow-wrap: anywhere;
+}
+
+.warning {
+    padding: 10px;
+    border-radius: 10px;
+    background: #fff8e8;
+    color: #99702d;
+    font-size: 10px;
+    line-height: 1.6;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-header h2 {
+    margin-bottom: 2px;
+}
+
+.dashboard-header .description {
+    margin: 0;
+}
+
+.online {
+    color: #279c68;
+    font-size: 9px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.stat-card {
+    background: var(--light-pink);
+    padding: 10px 5px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-card .number {
+    font-size: 22px;
+    color: var(--pink);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.stat-card p {
+    font-size: 9px;
+    color: var(--muted);
+}
+
+.question-card {
+    padding: 12px;
+    background: #fff8fb;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.question-card h3 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.question-card p {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.message {
+    background: var(--light-pink);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.agreement-list {
+    padding: 12px;
+    background: var(--light-pink);
+    border-radius: 12px;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.agreement-list p {
+    margin-bottom: 3px;
+}
+
+.status {
+    font-size: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 9px;
+    color: #c49aa9;
+}
+
+#dashboardSection.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+#dashboardSection > .dashboard-header,
+#dashboardSection > .question-card,
+#dashboardSection > .message,
+#dashboardSection > .status,
+#dashboardSection > button:last-of-type {
+    grid-column: 1 / -1;
+}
+
+#dashboardSection > .code-box,
+#dashboardSection > .stats {
+    align-self: stretch;
+    margin: 0;
+}
+
+#dashboardSection > .code-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#dashboardSection > .code-box .secret-code {
+    font-size: 12px;
+}
+
+#dashboardSection > .code-box button {
+    margin-top: 5px;
+    padding: 8px;
+}
+
+#dashboardSection > .question-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3px 6px;
+    margin: 0;
+}
+
+#dashboardSection > .question-card h3,
+#dashboardSection > .question-card p {
+    grid-column: 1 / -1;
+}
+
+#dashboardSection > .question-card button {
+    margin-top: 4px;
+    padding: 8px 5px;
+    font-size: 10px;
+}
+
+#dashboardSection > .message {
+    margin: 0;
+}
+
+#dashboardSection > button {
+    margin-top: 0;
+    padding: 9px 5px;
+    font-size: 10px;
+}
+
+#dashboardSection > .status {
+    margin-top: 0;
+}
+
+#toast {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #704354;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+    z-index: 10;
+    max-width: 90%;
+    text-align: center;
+}
+
+#toast.show {
+    opacity: 1;
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding: 16px;
+        border-radius: 21px;
+    }
+
+    .header {
+        margin-bottom: 12px;
+    }
+
+    #dashboardSection.active {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    #dashboardSection > .dashboard-header .description {
+        display: none;
+    }
+
+    #dashboardSection > .dashboard-header h2 {
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+    #dashboardSection > .code-box,
+    #dashboardSection > .stats {
+        grid-column: 1 / -1;
+    }
+
+    #dashboardSection > .stats {
+        gap: 6px;
+    }
+
+    #dashboardSection .stat-card {
+        padding: 8px 3px;
+    }
+
+    #dashboardSection .stat-card p {
+        font-size: 8px;
+    }
+
+    #dashboardSection > .code-box .secret-code {
+        font-size: 10px;
+    }
+
+    #dashboardSection > .code-box {
+        padding: 8px 6px;
+    }
+
+    #dashboardSection > .question-card {
+        padding: 7px;
+    }
+
+    #dashboardSection > .question-card button,
+    #dashboardSection > button {
+        padding: 6px 3px;
+        font-size: 9px;
+        line-height: 1.2;
+    }
+
+    #dashboardSection > .message {
+        padding: 7px;
+        font-size: 10px;
+    }
+
+    #dashboardSection > .status {
+        margin-top: 0;
+        font-size: 9px;
+    }
+}
+
+@media (max-height: 650px) {
+    body {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .container {
+        padding: 16px 21px;
+    }
+
+    .header {
+        margin-bottom: 12px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .footer {
+        margin-top: 12px;
+    }
+
+    #dashboardSection.active {
+        gap: 6px;
+    }
+
+    #dashboardSection > .question-card {
+        padding: 8px;
+    }
+
+    #dashboardSection > .message {
+        padding: 7px;
+        margin: 0;
+    }
+}
+
+@media (max-height: 520px) {
+    body {
+        padding: 4px 12px;
+    }
+
+    .container {
+        padding: 8px 16px;
+    }
+
+    .header {
+        margin-bottom: 5px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .header h1 {
+        font-size: 15px;
+    }
+
+    .header p,
+    .footer {
+        display: none;
+    }
+
+    #dashboardSection > .code-box {
+        padding: 5px;
+    }
+
+    #dashboardSection .stat-card {
+        padding: 4px;
+    }
+
+    #dashboardSection > .code-box small {
+        margin-bottom: 2px;
+        font-size: 8px;
+    }
+
+    #dashboardSection > .code-box .secret-code {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    #dashboardSection > .question-card {
+        padding: 5px;
+    }
+
+    #dashboardSection > .question-card h3 {
+        font-size: 11px;
+    }
+
+    #dashboardSection > .question-card p,
+    #dashboardSection > .status {
+        font-size: 8px;
+    }
+
+    #dashboardSection > .question-card button,
+    #dashboardSection > button {
+        padding: 4px 2px;
+        font-size: 8px;
+    }
+
+    #dashboardSection > .message {
+        padding: 5px;
+        font-size: 9px;
+        line-height: 1.3;
+    }
+}
+
+@media (max-height: 580px) {
+    .container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .header {
+        margin-bottom: 8px;
+    }
+
+    .agreement-list {
+        padding: 9px;
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .agreement-list p {
+        margin-bottom: 1px;
+    }
+
+    .description {
+        margin-bottom: 6px;
+    }
+
+    #dashboardSection.active {
+        gap: 4px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .agreement-list {
+        padding: 6px;
+        font-size: 9px;
+        line-height: 1.3;
+    }
+
+    .message {
+        padding: 6px;
+        margin: 6px 0;
+        font-size: 10px;
+    }
+
+    button {
+        padding: 7px;
+        margin-top: 4px;
+    }
+
+    .code-box {
+        padding: 8px 6px;
+        margin: 6px 0;
+    }
+
+    .warning {
+        padding: 6px;
+        margin: 6px 0;
+        line-height: 1.4;
+    }
+}
+
+@media (max-height: 520px) and (min-width: 561px) {
+    #dashboardSection.active {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "header header"
+            "code stats"
+            "question message"
+            "agreement reminders"
+            "logout status";
+        gap: 4px;
+    }
+
+    #dashboardSection > .dashboard-header {
+        grid-area: header;
+    }
+
+    #dashboardSection > .code-box {
+        grid-area: code;
+    }
+
+    #dashboardSection > .stats {
+        grid-area: stats;
+    }
+
+    #dashboardSection > .message {
+        grid-area: message;
+    }
+
+    #dashboardSection > .question-card {
+        grid-area: question;
+    }
+
+    #dashboardSection > button:nth-of-type(1) {
+        grid-area: agreement;
+    }
+
+    #dashboardSection > button:nth-of-type(2) {
+        grid-area: reminders;
+    }
+
+    #dashboardSection > button:nth-of-type(3) {
+        grid-area: logout;
+    }
+
+    #dashboardSection > .status {
+        grid-area: status;
+    }
+
+    #dashboardSection > .code-box,
+    #dashboardSection > .stats,
+    #dashboardSection > .question-card,
+    #dashboardSection > .message {
+        grid-column: auto;
+    }
+
+    #dashboardSection > button {
+        grid-column: auto;
+        padding: 5px 3px;
+        font-size: 9px;
+    }
+
+    #dashboardSection > .question-card {
+        margin: 0;
+        padding: 6px;
+    }
+
+    #dashboardSection > .question-card h3 {
+        font-size: 12px;
+    }
+
+    #dashboardSection > .question-card button {
+        font-size: 9px;
+        padding: 5px 3px;
+    }
+
+    #dashboardSection > .code-box {
+        padding: 6px;
+    }
+
+    #dashboardSection > .stats .stat-card {
+        padding: 5px 3px;
+    }
+}
