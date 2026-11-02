@@ -307,6 +307,10 @@ button.danger {
     color: #c49aa9;
 }
 
+.footer a {
+    color: inherit;
+}
+
 #dashboardSection.active {
     display: grid;
     grid-template-columns: 1fr 1fr;
