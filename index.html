@@ -159,6 +159,31 @@
             Remember: Trust and communication are important. 💕
         </div>
 
+        <section class="partner-messages" aria-labelledby="partnerMessagesTitle">
+            <h3 id="partnerMessagesTitle">Messages 💌</h3>
+            <div
+                class="comment-list"
+                id="commentList"
+                role="log"
+                aria-live="polite"
+                aria-relevant="additions text"
+            >
+                <p class="comment-empty" id="commentEmpty">No messages yet. Send your partner a note 💗</p>
+            </div>
+            <form class="comment-form" onsubmit="sendPartnerMessage(event)">
+                <label class="visually-hidden" for="commentInput">Write a message to your partner</label>
+                <input
+                    id="commentInput"
+                    type="text"
+                    maxlength="500"
+                    placeholder="Write a message..."
+                    autocomplete="off"
+                    required
+                >
+                <button id="sendMessageBtn" type="submit">Send 💗</button>
+            </form>
+        </section>
+
         <button class="secondary" onclick="showSection('agreementSection')">
             📜 Anti-Selos Agreement
         </button>

@@ -10,13 +10,18 @@ import {
 import {
     getFirestore,
     doc,
+    collection,
     getDoc,
+    addDoc,
     setDoc,
     updateDoc,
     increment,
     serverTimestamp,
     onSnapshot,
-    runTransaction
+    runTransaction,
+    query,
+    orderBy,
+    limit
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
 
 
@@ -46,6 +51,7 @@ const db = getFirestore(app);
 let currentCode = "";
 let currentDoc = null;
 let unsubscribeAccount = null;
+let unsubscribeMessages = null;
 
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
@@ -408,6 +414,9 @@ window.openDashboard = async function() {
         if (unsubscribeAccount) {
             unsubscribeAccount();
         }
+        if (unsubscribeMessages) {
+            unsubscribeMessages();
+        }
 
         // REAL-TIME FIRESTORE LISTENER
         unsubscribeAccount = onSnapshot(
@@ -457,9 +466,143 @@ window.openDashboard = async function() {
             }
         );
 
+        subscribeToPartnerMessages();
+
     } catch (error) {
 
         showError(error);
+
+    }
+
+};
+
+
+function renderPartnerMessages(messageSnapshots) {
+    const commentList = document.getElementById("commentList");
+
+    commentList.replaceChildren();
+
+    if (messageSnapshots.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.className = "comment-empty";
+        emptyMessage.textContent =
+            "No messages yet. Send your partner a note 💗";
+        commentList.append(emptyMessage);
+        return;
+    }
+
+    const currentUserId = auth.currentUser?.uid;
+
+    messageSnapshots.slice().reverse().forEach(messageSnapshot => {
+
+        const message = messageSnapshot.data();
+
+        if (typeof message.text !== "string" ||
+            typeof message.senderId !== "string") {
+            console.error("A shared account message has invalid data.");
+            return;
+        }
+
+        const comment = document.createElement("article");
+        comment.className = "comment";
+
+        const header = document.createElement("div");
+        header.className = "comment-header";
+
+        const author = document.createElement("strong");
+        author.textContent =
+            message.senderId === currentUserId ? "You" : "Partner";
+        header.append(author);
+
+        if (message.createdAt?.toDate) {
+            const time = document.createElement("time");
+            const createdAt = message.createdAt.toDate();
+            time.dateTime = createdAt.toISOString();
+            time.textContent = createdAt.toLocaleString();
+            header.append(time);
+        }
+
+        const text = document.createElement("p");
+        text.textContent = message.text;
+
+        comment.append(header, text);
+        commentList.append(comment);
+    });
+
+    commentList.scrollTop = commentList.scrollHeight;
+}
+
+
+function subscribeToPartnerMessages() {
+
+    const messagesQuery = query(
+        collection(currentDoc, "messages"),
+        orderBy("createdAt", "desc"),
+        limit(50)
+    );
+
+    unsubscribeMessages = onSnapshot(
+        messagesQuery,
+        snapshot => renderPartnerMessages(snapshot.docs),
+        error => {
+
+            console.error("Partner messages sync failed:", error);
+
+            const commentList = document.getElementById("commentList");
+            commentList.replaceChildren();
+
+            const errorMessage = document.createElement("p");
+            errorMessage.className = "comment-empty";
+            errorMessage.textContent =
+                error.code === "permission-denied"
+                    ? "Firebase blocked messages. Deploy the rules in firestore.rules."
+                    : "Unable to load messages.";
+            commentList.append(errorMessage);
+
+        }
+    );
+}
+
+
+window.sendPartnerMessage = async function(event) {
+
+    event.preventDefault();
+
+    const input = document.getElementById("commentInput");
+    const button = document.getElementById("sendMessageBtn");
+    const text = input.value.trim();
+
+    if (!text) {
+        toast("Write a message before sending.");
+        input.focus();
+        return;
+    }
+
+    if (!currentDoc || !auth.currentUser) {
+        toast("Please log in before sending a message.");
+        return;
+    }
+
+    button.disabled = true;
+
+    try {
+
+        await addDoc(collection(currentDoc, "messages"), {
+            text,
+            senderId: auth.currentUser.uid,
+            createdAt: serverTimestamp()
+        });
+
+        input.value = "";
+        toast("Message sent! 💗");
+
+    } catch (error) {
+
+        showError(error);
+
+    } finally {
+
+        button.disabled = false;
 
     }
 
@@ -606,6 +749,10 @@ window.logoutAccount = async function() {
         if (unsubscribeAccount) {
             unsubscribeAccount();
             unsubscribeAccount = null;
+        }
+        if (unsubscribeMessages) {
+            unsubscribeMessages();
+            unsubscribeMessages = null;
         }
 
         sessionStorage.removeItem("antiSelosCode");
