@@ -311,6 +311,7 @@ button.danger {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    align-items: stretch;
 }
 
 #dashboardSection > .dashboard-header,
@@ -373,6 +374,48 @@ button.danger {
 
 #dashboardSection > .status {
     margin-top: 0;
+}
+
+@media (min-width: 700px) {
+    body:has(#dashboardSection.active) .container {
+        max-width: 900px;
+    }
+
+    #dashboardSection.active {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #dashboardSection > .dashboard-header,
+    #dashboardSection > .status {
+        grid-column: 1 / -1;
+    }
+
+    #dashboardSection > .code-box,
+    #dashboardSection > .stats {
+        grid-column: span 1;
+    }
+
+    #dashboardSection > .stats {
+        grid-column: span 2;
+    }
+
+    #dashboardSection > .question-card {
+        grid-column: span 2;
+    }
+
+    #dashboardSection > .message {
+        grid-column: span 1;
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #dashboardSection > button,
+    #dashboardSection > button:last-of-type {
+        grid-column: span 1;
+    }
 }
 
 #toast {
